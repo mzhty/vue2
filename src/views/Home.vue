@@ -35,6 +35,7 @@
     methods: {
       initWebSocket(){ //初始化weosocket
         const wsuri = "ws://124.221.178.3:8099";
+        // const wsuri = "ws://192.168.1.247:8099";
         this.websock = new WebSocket(wsuri);
         this.websock.onmessage = this.websocketonmessage;
         // this.websock.onopen = this.websocketonopen;
@@ -53,7 +54,10 @@
         if(e) {
           this.value = '';
         }
-        const redata = JSON.parse(e.data);
+        let redata = JSON.parse(e.data);
+        if(redata.message.type && redata.message.type === 'Buffer') {
+          redata.message = Buffer.from(redata.message.data).toString('utf-8')
+        }
         this.list.push(redata);
         setTimeout(() => {
           const dom = document.getElementsByClassName('list-wrapper')[0]

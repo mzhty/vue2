@@ -1,5 +1,26 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="about-wrapper">
+    <div v-for="item in imgs" :key="item">
+      <img :src="item" alt="">
+    </div>
   </div>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        imgs: [require('@/assets/1132354.jpg')]
+      }
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+.about-wrapper {
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+</style>

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div>
-      <router-link to="{name: Home}" style="margin-right: 20px;">首页</router-link>
-      <router-link :to="{name: About}">第二页</router-link>
+      <router-link :to="{name: 'Home'}" style="margin-right: 20px;">首页</router-link>
+      <router-link :to="{name: 'About'}">第二页</router-link>
     </div>
     <router-view/>
   </div>

@@ -10,7 +10,10 @@
   export default {
     data() {
       return {
-        imgs: [require('@/assets/1132354.jpg')]
+        imgs: [
+          require('@/assets/cat.jpg'), 
+          // require('@/assets/1132354.jpg')
+        ]
       }
     }
   }

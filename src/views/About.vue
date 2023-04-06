@@ -35,6 +35,7 @@ import 'swiper/dist/css/swiper.min.css';
       initSwiper() {
         this.mySwiper = new Swiper('.swiper-container', {
           autoplay: 5000,//可选选项，自动滑动
+          autoplayDisableOnInteraction : false,
           loop: true,
           effect : 'cube',
           cube: {

@@ -17,11 +17,14 @@ import 'swiper/dist/css/swiper.min.css';
     data() {
       return {
         imgs: [
-          require('@/assets/cat.jpg'), 
           require('@/assets/cat1.jpg'),
+          require('@/assets/cat.jpg'), 
           require('@/assets/cat2.jpg'), 
           require('@/assets/cat3.jpg'), 
-          require('@/assets/cat4.jpg')
+          require('@/assets/cat4.jpg'),
+          require('@/assets/cat5.jpg'), 
+          require('@/assets/cat6.jpg'), 
+          require('@/assets/cat7.jpg'),
         ]
       }
     },
@@ -49,7 +52,8 @@ import 'swiper/dist/css/swiper.min.css';
 <style lang="scss" scoped>
 .about-wrapper {
   .swiper-container {
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     height: 500px;
     border-radius: 6px;
     text-align: center;

@@ -3,6 +3,7 @@
     <div style="height: 50px;line-height: 50px;text-align: center;">
       <router-link :to="{name: 'About'}" style="margin-right: 20px;">首页</router-link>
       <router-link :to="{name: 'Home'}">第二页</router-link>
+      <router-link :to="{name: 'wedding'}">第三页</router-link>
     </div>
     <router-view/>
   </div>

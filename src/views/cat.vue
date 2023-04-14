@@ -52,17 +52,34 @@ import 'swiper/dist/css/swiper.min.css';
 
 <style lang="scss" scoped>
 .about-wrapper {
+  width: calc(100vw);
+  height: calc(100vh);
+  background: url('~@/assets/back1.jpg') center no-repeat;
+  background-size: cover;
   .swiper-container {
+    border: 1px solid #e8e8e8;
+    padding: 20px;
     width: 100%;
-    max-width: 500px;
-    height: 500px;
+    // max-width: 500px;
+    // height: 600px;
     border-radius: 6px;
     text-align: center;
-    background: #eee;
-    line-height: 500px;
-    img {
-      max-width: 100%;
-      max-height: 100%;
+    line-height: 600px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    overflow: hidden;
+    .swiper-slide {
+      width: 90%;
+      height: 90%;
+      img {
+        max-width: 80%;
+        max-height: 80%;
+        border-radius: 10px;
+      }
     }
   }
 }

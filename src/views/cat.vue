@@ -1,5 +1,5 @@
 <template>
-  <div class="about-wrapper">
+  <div class="about-wrapper" :style="{backgroundImage: `url(${backList[backIndex]})`}">
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="item in imgs" :key="item">
@@ -7,6 +7,7 @@
         </div>
       </div>
     </div>
+    <a-button type="primary" @click="changeBack" class="backChange-btn">切换背景</a-button>
   </div>
 </template>
 
@@ -25,7 +26,16 @@ import 'swiper/dist/css/swiper.min.css';
           require('@/assets/cat5.jpg'), 
           require('@/assets/cat6.jpg'), 
           require('@/assets/cat7.jpg'),
-        ]
+        ],
+        backList: [
+          require('@/assets/back1.jpg'),
+          require('@/assets/back2.jpg'), 
+          require('@/assets/back3.jpg'), 
+          require('@/assets/back4.jpg'),
+          require('@/assets/back5.jpg'),
+          require('@/assets/back6.jpg'),
+        ],
+        backIndex: 0,
       }
     },
     mounted() {
@@ -45,6 +55,13 @@ import 'swiper/dist/css/swiper.min.css';
             shadowScale: 0.6
           }
         })
+      },
+      changeBack() {
+        if(this.backIndex >= this.backList.length - 1) {
+          this.backIndex = 0;
+        } else {
+          this.backIndex++;
+        }
       }
     }
   }
@@ -54,7 +71,8 @@ import 'swiper/dist/css/swiper.min.css';
 .about-wrapper {
   width: calc(100vw);
   height: calc(100vh);
-  background: url('~@/assets/back1.jpg') center no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
   .swiper-container {
     border: 1px solid #e8e8e8;
@@ -81,6 +99,12 @@ import 'swiper/dist/css/swiper.min.css';
         border-radius: 10px;
       }
     }
+  }
+  .backChange-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 99;
   }
 }
 </style>

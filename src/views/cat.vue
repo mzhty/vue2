@@ -74,6 +74,7 @@ import 'swiper/dist/css/swiper.min.css';
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  transition: background-image .4s ease-in-out;
   .swiper-container {
     border: 1px solid #e8e8e8;
     padding: 20px;

@@ -2,7 +2,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   assetsDir: 'static',
-  publicPath: '/cat',
+  publicPath: '/',
   configureWebpack: {
     plugins: [
       new CompressionPlugin({

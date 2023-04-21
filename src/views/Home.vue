@@ -34,8 +34,7 @@
     },
     methods: {
       initWebSocket(){ //初始化weosocket
-        const wsuri = "ws://124.221.178.3:8099";
-        // const wsuri = "ws://192.168.1.247:8099";
+        const wsuri = "ws://124.221.178.3:5600";
         this.websock = new WebSocket(wsuri);
         this.websock.onmessage = this.websocketonmessage;
         // this.websock.onopen = this.websocketonopen;

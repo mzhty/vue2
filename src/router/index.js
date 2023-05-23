@@ -6,6 +6,11 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    name: 'player',
+    component: () => import('@/views/player/index.vue')
+  },
+  {
+    path: '/cat',
     name: 'cat',
     component: () => import('@/views/cat.vue')
   },
@@ -46,7 +51,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
+  base: '/cat',
   routes
 })
 

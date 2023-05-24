@@ -1,98 +1,51 @@
 <template>
-  <div id="video-player" class="video-player"></div>
+  <div id="vs" style="width: 100%;height: 100vh;"></div>
 </template>
 <script>
-// import Player from 'xgplayer';
-import Music from 'xgplayer-music';
-export default {
-  components: {
-    // Music
-  },
-  props: {
-    url: {
-      // 父组件传过来的视频链接
-      type: String,
-      default: 'https://fileobsc30.iclass30.com/doc_tp_gen/72/570/1218E99AAEC941C421993BDAD84DB91D.mp3/file.mp3',
-    },
-  },
+import Player from 'xgplayer'
+import 'xgplayer/dist/index.min.css'
+import MusicPreset from 'xgplayer-music'
+import 'xgplayer-music/dist/index.min.css'
+
+export default({
   data() {
     return {
-      player: null, //实例
-    };
+      url: 'https://zhang9898.online/music/周杰伦-红颜如霜.flac',
+      list: []
+    }
   },
-  mounted() {
-    console.log('传过来的url:', this.url);
-    // 初始化播放器
-    this.initPlayer();
-  },
-  created() {},
-  // 监听播放路径的变化
-  watch: {
-    url: {
-      handler() {
-        if (!this.player) {
-          this.initPlayer();
-          return;
-        }
-        this.player.src = this.url;
-      },
-    },
+  mounted () {
+    this.init();
   },
   methods: {
-    // =========================1，设置播放器必要参数===================
-    initPlayer() {
-      if (!this.url) return console.warn('url is not esist');
-      const config = {
-        id: 'video-player',
+    init() {
+      new Player({
+        id: 'vs',
         url: this.url,
-        fluid: true,
-
-        /**倍速播放 */
-        playbackRate: [0.5, 0.75, 1, 1.5, 2],
-        defaultPlaybackRate: 1,
-
-        playsinline: this.isAppleDevice(), // IOS设备设置，防止被浏览器劫持
-        'x5-video-player-type': 'h5', // 微信内置浏览器设置，防止被浏览器劫持
-        'x5-video-orientation': 'portraint',
-        /**画中画 */
-        pip: true,
-        pipConfig: {
-          bottom: 100,
-          right: 100,
-          width: 320,
-          height: 180,
+        poster: 'https://images6.alphacoders.com/884/884774.jpg',
+        title: '这是音乐标题',
+        /***以下配置音乐播放器一定要有start***/
+        controls: {
+          mode: 'flex',
+          initShow: true
         },
-        // download: true,
-        /**初始化首帧 */
-        videoInit: true,
-        autoplay: true,
-      };
-      //========================== 2，开始实例化======================
-      const player = new Music(config);
-
-      if (player) {
-        this.player = player;
-        /* 这里注册监听 */
-        // 监听视频开始播放 播放传给父组件的是true 
-        this.player.on('play', () => {
-          this.$emit('triggerEvent', true);
-        });
-        // 监听视频已经暂停 暂停传给父组件的是true 
-        this.player.on('pause', () => {
-          this.$emit('triggerEvent', false);
-        });
-        // 监听 视频退出全屏 
-        // this.player.on('exitFullscreen', () => {
-        //   window.scrollTo(0, 0);
-        //   console.log('已经退出全屏了');
-        // });
-      }
-    },
-    // IOS设备设置，防止被浏览器劫持
-    isAppleDevice() {
-      const ua = navigator.userAgent.toLowerCase();
-      return /iphone|ipad|phone|Mac/i.test(ua);
-    },
-  },
-};
+        marginControls: true,
+        mediaType: 'audio', // 视频为video, h265为 xg-video, 音频为audio
+        preset: ['default', MusicPreset],
+        /***以上配置音乐播放器一定要有ended***/
+        music: {
+          // 音乐循环播放列表，如果不需要循环播放可以没有
+          list: [{
+            url: 'xx',
+            vid: '123',
+            poster: 'ccc',
+            title: 'ccc'
+          }]
+        },
+        width: "100%",
+        height: 700
+      })
+    }
+  }
+})
 </script>
